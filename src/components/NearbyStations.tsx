@@ -1,7 +1,7 @@
 import { Avatar, Chip, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemText, Slider, Typography } from '@mui/material';
 import { memo, useEffect, useState } from 'react';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import RadioMapStore from '../RadioMapStore';
+import RadioMapStore, { type Station } from '../RadioMapStore';
 import { observer } from 'mobx-react-lite';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 

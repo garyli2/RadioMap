@@ -1,7 +1,19 @@
 import { makeAutoObservable } from 'mobx';
 
-
 const DEFAULT_LOCATION = [43.466667, -80.516670];
+
+export type Station = {
+    id: string;
+    name: string;
+    url: string;
+    homepage: string;
+    icon: string;
+    country: string;
+    codec: string;
+    lat: number;
+    lng: number;
+    votes: string;
+}
 
 class RadioMapStore {
     
