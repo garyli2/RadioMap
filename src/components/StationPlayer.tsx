@@ -23,7 +23,6 @@ const StationPlayer = observer((props: StationPlayerProps) => {
                     {store.isPlaying ? <StopCircleIcon /> : <PlayCircleIcon />}
                 </IconButton>
             </div>
-
         </Paper>
     </>
 });

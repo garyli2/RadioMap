@@ -1,7 +1,5 @@
 import { makeAutoObservable } from 'mobx';
 
-const DEFAULT_LOCATION = [43.466667, -80.516670];
-
 export type Station = {
     id: string;
     name: string;
@@ -16,15 +14,11 @@ export type Station = {
 }
 
 class RadioMapStore {
-    
     station: Station | undefined;
     isPlaying = false;
     searchRadius = 30;
-    viewState = {
-        latitude: DEFAULT_LOCATION[0],
-        longitude: DEFAULT_LOCATION[1],
-        zoom: 10,
-    }
+    mapCenterLongitude: number = -80.516670;
+    mapCenterLatitude: number = 43.466667;
     slideOut = false;
 
     constructor() {
@@ -35,8 +29,9 @@ class RadioMapStore {
         this.slideOut = slideOut;
     }
 
-    setViewState(viewState: {longitude: number, latitude: number, zoom: number}) {
-        this.viewState = viewState;
+    setViewState(longitude: number, latitude: number) {
+        this.mapCenterLatitude = latitude;
+        this.mapCenterLongitude = longitude;
     }
 
     play() {
@@ -46,7 +41,6 @@ class RadioMapStore {
     }
 
     playNew(station: Station) {
-        this.pause();
         if (station.url.includes('http://')) {
             console.log('Upgrading http to https', station.url);
             station.url = station.url.replace('http://', 'https://');
