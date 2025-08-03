@@ -8,8 +8,6 @@ import { observer } from 'mobx-react-lite';
 
 import { ThemeProvider, createTheme } from '@mui/material';
 
-import "react-sliding-pane/dist/react-sliding-pane.css";
-
 import { RadioMap } from './map/RadioMap';
 import NearbyStationsDrawer from './components/NearbyStationsDrawer';
 

@@ -20,13 +20,12 @@
 		"@types/mapbox-gl": "^3.4.1",
 		"hls.js": "^1.6.7",
 		"is-mobile": "^5.0.0",
-		"mapbox-gl": "^3.13.0",
+		"mapbox-gl": "^3.14.0",
 		"mobx": "^6.13.7",
 		"mobx-react-lite": "^4.1.0",
-		"react": "^19.1.0",
-		"react-dom": "^19.1.0",
-		"react-map-gl": "^8.0.4",
-		"react-sliding-pane": "^7.3.0"
+		"react": "^19.1.1",
+		"react-dom": "^19.1.1",
+		"react-map-gl": "^8.0.4"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.32.0",
