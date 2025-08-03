@@ -1,18 +1,15 @@
-import { Avatar, Button, Chip, Divider, Drawer, IconButton, List, ListItem, ListItemAvatar, ListItemText, Slider, Typography } from '@mui/material';
+import { Avatar, Button, Chip, Divider, Drawer, IconButton, List, ListItem, ListItemAvatar, ListItemText, Slider } from '@mui/material';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import RadioMapStore from '../RadioMapStore';
+import RadioMapStore from '../store/RadioMapStore';
 import { observer } from 'mobx-react-lite';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { getDistanceFromLatLonInKm } from '../utils';
 import STATIONS_DATA from '../static/data.json';
 import mobile from 'is-mobile';
 import RadioIcon from '@mui/icons-material/Radio';
+import { NoNearbyStations } from './NoNearbyStations';
 
 const DISTANCE_OPTIONS = [10, 20, 30, 50].map(num => ({ value: num, label: `${num}km` }));
-
-const NoNearbyStations = () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', margin: 5, marginTop: 20 }}>
-    <Typography textAlign="center">No nearby stations. Try moving around the map or adjusting the radius slider.</Typography>
-</div>;
 
 const NearbyStationsList = observer(({ store }: { store: RadioMapStore }) => {
     const searchRadius = store.searchRadius;
@@ -47,13 +44,16 @@ const NearbyStationsList = observer(({ store }: { store: RadioMapStore }) => {
     </List>;
 });
 
+const DrawerButton = observer((({ store }: { store: RadioMapStore }) =>
+    <div style={{ position: 'absolute', right: 20, top: 10 }}>
+        <Button onClick={() => store.setSlideOut(true)} variant="contained" startIcon={<RadioIcon />} >
+            Stations List
+        </Button>
+    </div>));
+
 const NearbyStationsDrawer = observer(({ store }: { store: RadioMapStore }) => {
     if (!store.slideOut) {
-        return <div style={{ position: 'absolute', right: 20, top: 10 }}>
-            <Button onClick={() => store.setSlideOut(true)} variant="contained" startIcon={<RadioIcon />} >
-                Stations List
-            </Button>
-        </div>
+        return <DrawerButton store={store} />
     }
 
     return <Drawer
@@ -80,7 +80,7 @@ const NearbyStationsDrawer = observer(({ store }: { store: RadioMapStore }) => {
                 max={55}
                 min={5}
                 step={null}
-                onChange={(_e, value) => store.setSearchRadius(value)}
+                onChange={(_, value) => store.setSearchRadius(value)}
                 valueLabelDisplay="auto"
                 marks={DISTANCE_OPTIONS}
             />

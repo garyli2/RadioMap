@@ -1,0 +1,2 @@
+export const MAPBOX_TOKEN = "pk.eyJ1IjoibGktZ2FyeSIsImEiOiJjbG02Y2N1eXcwenZ2M2pwNGl6dGJmMHd1In0.0YsbtBewZhkFDARTOgSOLA";
+export const DEFAULT_LOCATION = [43.466667, -80.516670];

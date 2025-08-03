@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx';
+import { DEFAULT_LOCATION } from '../constants';
 
 export type Station = {
     id: string;
@@ -17,8 +18,8 @@ class RadioMapStore {
     station: Station | undefined;
     isPlaying = false;
     searchRadius = 30;
-    mapCenterLongitude: number = -80.516670;
-    mapCenterLatitude: number = 43.466667;
+    mapCenterLatitude: number = DEFAULT_LOCATION[0];
+    mapCenterLongitude: number = DEFAULT_LOCATION[1];
     slideOut = false;
 
     constructor() {
@@ -32,6 +33,10 @@ class RadioMapStore {
     setViewState(longitude: number, latitude: number) {
         this.mapCenterLatitude = latitude;
         this.mapCenterLongitude = longitude;
+    }
+
+    togglePlay() {
+        this.isPlaying = !this.isPlaying;
     }
 
     play() {

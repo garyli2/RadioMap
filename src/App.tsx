@@ -1,6 +1,6 @@
 
 import StationPlayer from './components/StationPlayer';
-import RadioMapStore from './RadioMapStore';
+import RadioMapStore from './store/RadioMapStore';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { observer } from 'mobx-react-lite';
@@ -10,7 +10,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 
 import "react-sliding-pane/dist/react-sliding-pane.css";
 
-import { RadioMap } from './components/RadioMap';
+import { RadioMap } from './map/RadioMap';
 import NearbyStationsDrawer from './components/NearbyStationsDrawer';
 
 const store = new RadioMapStore();

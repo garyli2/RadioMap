@@ -1,13 +1,11 @@
 import { useRef } from "react";
 import Map, { type MapRef, Source, Layer, AttributionControl } from "react-map-gl/mapbox";
-import { HEAT_MAP_LAYER } from '../heatmap-layer';
+import { HEAT_MAP_LAYER } from './heatmap-layer';
 import MAP_LAYER_DATA from '../static/layer.json';
-import type RadioMapStore from "../RadioMapStore";
+import type RadioMapStore from "../store/RadioMapStore";
 import circle from "@turf/circle";
 import { observer } from "mobx-react-lite";
-
-const MAPBOX_TOKEN = "pk.eyJ1IjoibGktZ2FyeSIsImEiOiJjbG02Y2N1eXcwenZ2M2pwNGl6dGJmMHd1In0.0YsbtBewZhkFDARTOgSOLA";
-const DEFAULT_LOCATION = [43.466667, -80.516670];
+import { DEFAULT_LOCATION, MAPBOX_TOKEN } from "../constants";
 
 export const RadioMap = observer(({ store }: { store: RadioMapStore }) => {
     const mapRef = useRef<MapRef>(null);

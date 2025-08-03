@@ -1,6 +1,6 @@
 import { Divider, IconButton, Paper, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
-import RadioMapStore from '../RadioMapStore';
+import RadioMapStore from '../store/RadioMapStore';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
 import isMobile from 'is-mobile';
@@ -39,7 +39,7 @@ const StationPlayer = observer((props: StationPlayerProps) => {
 
             <Divider orientation='vertical' />
             <div style={{ width: '20%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <IconButton onClick={() => store.isPlaying ? store.pause() : store.play()}>
+                <IconButton onClick={() => store.togglePlay()}>
                     {store.isPlaying ? <StopCircleIcon /> : <PlayCircleIcon />}
                 </IconButton>
             </div>
